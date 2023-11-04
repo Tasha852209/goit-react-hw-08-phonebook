@@ -1,67 +1,82 @@
-import { ContactForm } from './ContactForm/ContactForm';
-import { ContactList } from './ContactList/ContactList';
-import { Filter } from './Filter/Filter';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  addContact,
-  deleteContact,
-  fetchContacts,
-  filterContacts,
-} from 'redux/ContactsSlice';
-import { useEffect } from 'react';
-import {
-  selectError,
-  selectFilter,
-  selectIsLoading,
-  selectItems,
-} from 'redux/selectors';
+import ContactsPage from 'pages/ContactsPage';
+import HomePage from 'pages/HomePage';
+import LoginPage from 'pages/LoginPage';
+import RegisterPage from 'pages/RegisterPage';
+import React, { Suspense } from 'react';
+import { Route, Routes } from 'react-router-dom';
 import Loader from './Loader';
-import ErrorMessage from './ErrorMessage';
+import Layout from './Layout/Layout';
 
-export const App = () => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
-
-  const contacts = useSelector(selectItems);
-  const filter = useSelector(selectFilter);
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
-
-  const addNewContact = newContact => {
-    contacts.some(({ name }) => name === newContact.name)
-      ? alert(`${newContact.name} is already in contacts`)
-      : dispatch(addContact(newContact));
-  };
-
-  const handleFilterContacts = filteredValue => {
-    dispatch(filterContacts(filteredValue));
-  };
-
-  const getFilterContacts = () => {
-    const filterlowerCase = filter.toLowerCase();
-    return contacts.filter(({ name }) =>
-      name.toLowerCase().includes(filterlowerCase)
-    );
-  };
-
-  const onDeleteContact = contactId => {
-    dispatch(deleteContact(contactId));
-  };
-
+const appRoutes = [
+  { path: '/', element: <HomePage /> },
+  {
+    path: '/register',
+    element: <RegisterPage />,
+  },
+  {
+    path: '/login',
+    element: <LoginPage />,
+  },
+  {
+    path: '/contacts',
+    element: <ContactsPage />,
+  },
+];
+const App = () => {
   return (
-    <div>
-      <h1>Phonebook</h1>
-      <ContactForm addNewContact={addNewContact}></ContactForm>
-      <h2>Contacts</h2>
-      <Filter value={filter} handleFilterContacts={handleFilterContacts} />
-      {isLoading && !error && <Loader />}
-      {error && <ErrorMessage message={error} />}
-      <ContactList
-        contacts={getFilterContacts()}
-        onDeleteContact={onDeleteContact}
-      />
-    </div>
+    <Suspense fallback={<Loader />}>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          {appRoutes.map(({ path, element }) => (
+            <Route key={path} path={path} element={element} />
+          ))}
+        </Route>
+      </Routes>
+    </Suspense>
   );
 };
+
+export default App;
+
+// const appRoutes = [
+//   { path: '/', element: <HomePage /> },
+//   {
+//     path: '/register',
+//     element: (
+//       <PublicRoute redirectTo="/contacts" component={<RegisterPage />} />
+//     ),
+//   },
+//   {
+//     path: '/login',
+//     element: <PublicRoute redirectTo="/contacts" component={<LoginPage />} />,
+//   },
+//   {
+//     path: '/contacts',
+//     element: <PrivateRoute redirectTo="/login" component={<ContactsPage />} />,
+//   },
+// ];
+// export default function App() {
+//   const { isRefreshing } = useAuth();
+
+//   const dispatch = useDispatch();
+//   useEffect(() => {
+//     dispatch(refreshUser());
+//   }, [dispatch]);
+
+//   return isRefreshing ? (
+//     <Loading />
+//   ) : (
+//     <>
+//       <Suspense fallback={<Loading />}>
+//         <Routes>
+//           <Route path="/" element={<Layout />}>
+//             {appRoutes.map(({ path, element }) => (
+//               <Route key={path} path={path} element={element} />
+//             ))}
+//           </Route>
+//         </Routes>
+//       </Suspense>
+//       <ToastContainer />
+//     </>
+//   );
+// }
