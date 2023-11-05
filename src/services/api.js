@@ -4,7 +4,7 @@ const contactsInstance = axios.create({
   baseURL: 'https://connections-api.herokuapp.com',
 });
 export const setToken = token => {
-  contactsInstance.defaults.headers.common.Authorization = `Bearer ${token}`;
+  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
 export const requestContacts = async () => {
@@ -24,7 +24,6 @@ export const requestDeleteContact = async contactId => {
 
 export const requestRegister = async formData => {
   const { data } = await contactsInstance.post('/users/signup', formData);
-  console.log(data);
   setToken(data.token);
   return data;
 };
