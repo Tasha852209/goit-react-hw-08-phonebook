@@ -1,11 +1,12 @@
-import ContactsPage from 'pages/ContactsPage';
-import HomePage from 'pages/HomePage';
-import LoginPage from 'pages/LoginPage';
-import RegisterPage from 'pages/RegisterPage';
-import React, { Suspense } from 'react';
+import { Suspense, lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Loader from './Loader';
 import Layout from './Layout/Layout';
+
+const HomePage = lazy(() => import('pages/HomePage'));
+const ContactsPage = lazy(() => import('pages/ContactsPage'));
+const LoginPage = lazy(() => import('pages/LoginPage'));
+const RegisterPage = lazy(() => import('pages/RegisterPage'));
 
 const appRoutes = [
   { path: '/', element: <HomePage /> },

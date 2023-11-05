@@ -1,4 +1,5 @@
-import AuthNav from 'components/AuthNav/AuthNav';
+import Navigation from 'components/Navigation/Navigation';
+
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 
@@ -6,7 +7,7 @@ const Layout = () => {
   return (
     <>
       <header>
-        <AuthNav />
+        <Navigation />
       </header>
       <Outlet />
     </>
