@@ -4,7 +4,11 @@ const contactsInstance = axios.create({
   baseURL: 'https://connections-api.herokuapp.com',
 });
 export const setToken = token => {
-  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  contactsInstance.defaults.headers.common.Authorization = `Bearer ${token}`;
+};
+
+export const clearToken = () => {
+  contactsInstance.defaults.headers.common.Authorization = '';
 };
 
 export const requestContacts = async () => {
@@ -38,6 +42,6 @@ export const requestLogout = async () => {
 };
 
 export const requestRefreshUser = async () => {
-  const { data } = await contactsInstance.post('/users/current');
+  const { data } = await contactsInstance.get('/users/current');
   return data;
 };

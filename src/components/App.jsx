@@ -2,6 +2,11 @@ import { Suspense, lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Loader from './Loader';
 import Layout from './Layout/Layout';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { refreshUserThunk } from 'redux/AuthSlice';
+import RestictedRoute from './RestictedRoute';
+import PrivateRoute from './PrivateRoute';
 
 const HomePage = lazy(() => import('pages/HomePage'));
 const ContactsPage = lazy(() => import('pages/ContactsPage'));
@@ -12,18 +17,34 @@ const appRoutes = [
   { path: '/', element: <HomePage /> },
   {
     path: '/register',
-    element: <RegisterPage />,
+    element: (
+      <RestictedRoute>
+        <RegisterPage />
+      </RestictedRoute>
+    ),
   },
   {
     path: '/login',
-    element: <LoginPage />,
+    element: (
+      <RestictedRoute>
+        <LoginPage />
+      </RestictedRoute>
+    ),
   },
   {
     path: '/contacts',
-    element: <ContactsPage />,
+    element: (
+      <PrivateRoute>
+        <ContactsPage />
+      </PrivateRoute>
+    ),
   },
 ];
 const App = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(refreshUserThunk());
+  }, [dispatch]);
   return (
     <Suspense fallback={<Loader />}>
       <Routes>

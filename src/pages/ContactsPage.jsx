@@ -14,7 +14,7 @@ import {
   selectFilter,
   selectIsLoading,
   selectItems,
-} from 'redux/selectors';
+} from 'redux/contacts.selectors';
 import Loader from '../components/Loader';
 import ErrorMessage from '../components/ErrorMessage';
 
