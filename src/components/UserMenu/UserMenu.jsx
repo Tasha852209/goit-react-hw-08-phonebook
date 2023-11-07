@@ -1,8 +1,9 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+
 import { logoutThunk } from 'redux/AuthSlice';
 import { selectAuthUserData } from 'redux/auth.selectors';
+import { StyledButton, StyledDiv, StyledNavLink } from './UserMenu.styled';
 
 const UserMenu = () => {
   const dispatch = useDispatch();
@@ -12,9 +13,11 @@ const UserMenu = () => {
   };
   return (
     <>
-      <NavLink to="/contacts">Contacts</NavLink>
-      <p>{name},</p>
-      <button onClick={handleLogout}>Log Out</button>
+      <StyledNavLink to="/contacts">Contacts</StyledNavLink>
+      <StyledDiv>
+        <p>{name},</p>
+        <StyledButton onClick={handleLogout}>Log Out</StyledButton>
+      </StyledDiv>
     </>
   );
 };

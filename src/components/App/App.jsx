@@ -1,13 +1,14 @@
 import { Suspense, lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Loader from './Loader';
-import Layout from './Layout/Layout';
+import Loader from '../Loader';
+import Layout from '../Layout/Layout';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { refreshUserThunk } from 'redux/AuthSlice';
-import RestictedRoute from './RestictedRoute';
-import PrivateRoute from './PrivateRoute';
+import RestictedRoute from '../RestictedRoute';
+import PrivateRoute from '../PrivateRoute';
 import { selectAuthIsloading } from 'redux/auth.selectors';
+import { StyledApp } from './App.styled';
 
 const HomePage = lazy(() => import('pages/HomePage'));
 const ContactsPage = lazy(() => import('pages/ContactsPage'));
@@ -47,20 +48,24 @@ const App = () => {
   useEffect(() => {
     dispatch(refreshUserThunk());
   }, [dispatch]);
-  return isRefreshing ? (
-    <Loader />
-  ) : (
-    <>
-      <Suspense fallback={<Loader />}>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            {appRoutes.map(({ path, element }) => (
-              <Route key={path} path={path} element={element} />
-            ))}
-          </Route>
-        </Routes>
-      </Suspense>
-    </>
+  return (
+    <StyledApp>
+      {isRefreshing ? (
+        <Loader />
+      ) : (
+        <>
+          <Suspense fallback={<Loader />}>
+            <Routes>
+              <Route path="/" element={<Layout />}>
+                {appRoutes.map(({ path, element }) => (
+                  <Route key={path} path={path} element={element} />
+                ))}
+              </Route>
+            </Routes>
+          </Suspense>
+        </>
+      )}
+    </StyledApp>
   );
 };
 
