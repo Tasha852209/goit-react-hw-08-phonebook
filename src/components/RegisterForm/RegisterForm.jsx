@@ -1,3 +1,4 @@
+import { Notify } from 'notiflix';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
@@ -20,8 +21,12 @@ const RegisterForm = () => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <label>
         <span>Name:</span>
-        <input {...register('name', { required: true })} type="text" />
-        {errors.name && <span>This field is required</span>}
+        <input
+          {...register('name', { required: true })}
+          type="text"
+          placeholder="name or/and surname"
+        />
+        {errors.name && onSubmit && Notify.failure('This field is required')}
       </label>
       <label>
         <span>Email:</span>
@@ -30,7 +35,7 @@ const RegisterForm = () => {
           type="email"
           placeholder="example@mail.com"
         />
-        {errors.email && <span>This field is required</span>}
+        {errors.email && onSubmit && Notify.failure('This field is required')}
       </label>
       <label>
         <span>Password:</span>
@@ -39,7 +44,9 @@ const RegisterForm = () => {
           type="password"
           placeholder="minimum 7 characters"
         />
-        {errors.password && <span>This field is required</span>}
+        {errors.password &&
+          onSubmit &&
+          Notify.failure('This field is required with 7 characters')}
       </label>
 
       <button type="submit">Register</button>

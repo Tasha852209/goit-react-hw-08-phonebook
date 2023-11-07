@@ -1,3 +1,4 @@
+import { Notify } from 'notiflix';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
@@ -21,7 +22,7 @@ const LoginForm = () => {
       <label>
         <span>Email:</span>
         <input {...register('email', { required: true })} type="email" />
-        {errors.email && <span>This field is required</span>}
+        {errors.email && onSubmit && Notify.failure('This field is required')}
       </label>
       <label>
         <span>Password:</span>
@@ -29,7 +30,9 @@ const LoginForm = () => {
           {...register('password', { required: true, minLength: 7 })}
           type="password"
         />
-        {errors.password && <span>This field is required</span>}
+        {errors.password &&
+          onSubmit &&
+          Notify.failure('This field is required with minimum 7 characters')}
       </label>
 
       <button type="submit">Login</button>
