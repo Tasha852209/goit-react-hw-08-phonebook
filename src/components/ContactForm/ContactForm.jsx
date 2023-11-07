@@ -22,9 +22,9 @@ export const ContactForm = ({ addNewContact }) => {
     e.preventDefault();
 
     const contactName = e.currentTarget.elements.name.value;
-    const contactPhone = e.currentTarget.elements.phone.value;
+    const contactPhone = e.currentTarget.elements.number.value;
 
-    const newContact = { name: contactName, phone: contactPhone };
+    const newContact = { name: contactName, number: contactPhone };
 
     addNewContact(newContact);
     e.currentTarget.reset();
@@ -46,9 +46,9 @@ export const ContactForm = ({ addNewContact }) => {
         <p>Number</p>
         <input
           type="tel"
-          name="phone"
+          name="number"
           // onChange={handleChange}
-          value={contacts.phone}
+          value={contacts.number}
           required
         />
       </label>
