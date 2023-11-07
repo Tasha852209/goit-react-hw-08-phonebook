@@ -34,10 +34,12 @@ export const requestRegister = async formData => {
 
 export const requestLogin = async formData => {
   const { data } = await contactsInstance.post('/users/login', formData);
+  setToken(data.token);
   return data;
 };
 export const requestLogout = async () => {
   const { data } = await contactsInstance.post('/users/logout');
+  console.log(data);
   return data;
 };
 
