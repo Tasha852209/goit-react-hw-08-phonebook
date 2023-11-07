@@ -55,7 +55,11 @@ const ContactsPage = () => {
       <h1>Phonebook</h1>
       <ContactForm addNewContact={addNewContact}></ContactForm>
       <h2>Contacts</h2>
-      <Filter value={filter} handleFilterContacts={handleFilterContacts} />
+      {contacts.length === 0 ? (
+        <p>Empty...</p>
+      ) : (
+        <Filter value={filter} handleFilterContacts={handleFilterContacts} />
+      )}
       {isLoading && !error && <Loader />}
       {error && <ErrorMessage message={error} />}
       <ContactList

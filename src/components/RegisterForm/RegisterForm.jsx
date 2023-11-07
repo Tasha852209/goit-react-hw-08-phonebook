@@ -25,7 +25,11 @@ const RegisterForm = () => {
       </label>
       <label>
         <span>Email:</span>
-        <input {...register('email', { required: true })} type="email" />
+        <input
+          {...register('email', { required: true })}
+          type="email"
+          placeholder="example@mail.com"
+        />
         {errors.email && <span>This field is required</span>}
       </label>
       <label>
@@ -33,6 +37,7 @@ const RegisterForm = () => {
         <input
           {...register('password', { required: true, minLength: 7 })}
           type="password"
+          placeholder="minimum 7 characters"
         />
         {errors.password && <span>This field is required</span>}
       </label>

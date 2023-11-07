@@ -4,8 +4,12 @@ export const Filter = ({ value, handleFilterContacts }) => {
   const handleChange = e => handleFilterContacts(e.target.value);
   return (
     <div className={css.filter}>
-      <p>Find contacts by name</p>
-      <input value={value} type="text" onChange={handleChange} />
+      <input
+        value={value}
+        type="text"
+        onChange={handleChange}
+        placeholder="Find contact by name"
+      />
     </div>
   );
 };
