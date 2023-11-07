@@ -68,6 +68,11 @@ const contactsSlice = createSlice({
       .addCase(addContact.fulfilled, (state, action) => {
         state.contacts.isLoading = false;
         state.contacts.items = [action.payload, ...state.contacts.items];
+        // if (Array.isArray(state.contacts)) {
+        //   state.contacts.unshift(action.payload);
+        // } else {
+        //   state.contacts = [action.payload];
+        // }
       })
 
       .addCase(deleteContact.fulfilled, (state, action) => {

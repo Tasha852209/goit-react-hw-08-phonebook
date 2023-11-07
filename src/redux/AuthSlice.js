@@ -110,6 +110,7 @@ const authSlice = createSlice({
         //return INITIAL_STATE;
         state.user = { name: null, email: null };
         state.token = null;
+        state.isLoading = false;
         state.authenticated = false;
       })
       .addMatcher(
