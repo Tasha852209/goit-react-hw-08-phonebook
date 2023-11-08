@@ -42,7 +42,7 @@ export const StyledButton = styled.button`
   border-radius: 8px;
   background-color: #289b22;
   box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.3);
-  width: 120px;
+  max-width: 120px;
   &.delete {
     margin-left: 10px;
     padding: 0;
@@ -50,8 +50,8 @@ export const StyledButton = styled.button`
     width: 80px;
   }
   &.logout {
-    padding: 0;
-    font-size: 23px;
+    padding: 0 5px;
+    font-size: 20px;
   }
   &:hover,
   &:active {
