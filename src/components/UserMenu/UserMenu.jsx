@@ -16,7 +16,9 @@ const UserMenu = () => {
       <StyledNavLink to="/contacts">Contacts</StyledNavLink>
       <StyledDiv>
         <p>{name},</p>
-        <StyledButton onClick={handleLogout}>Log Out</StyledButton>
+        <StyledButton className="logout" onClick={handleLogout}>
+          Log Out
+        </StyledButton>
       </StyledDiv>
     </>
   );

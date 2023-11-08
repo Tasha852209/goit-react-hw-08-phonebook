@@ -17,6 +17,8 @@ import {
 } from 'redux/contacts.selectors';
 import Loader from '../components/Loader';
 import ErrorMessage from '../components/ErrorMessage';
+import { StyledP } from 'components/RegisterForm/RegisterForm.styled';
+import { StyledContacts } from 'components/Navigation/Navigation.styled';
 
 const ContactsPage = () => {
   const dispatch = useDispatch();
@@ -52,11 +54,11 @@ const ContactsPage = () => {
 
   return (
     <div>
-      <h1>Phonebook</h1>
+      <StyledP>Phonebook</StyledP>
       <ContactForm addNewContact={addNewContact}></ContactForm>
-      <h2>Contacts</h2>
+      <StyledP>Contacts</StyledP>
       {contacts.length === 0 ? (
-        <p>Empty...</p>
+        <StyledContacts>Empty...</StyledContacts>
       ) : (
         <Filter value={filter} handleFilterContacts={handleFilterContacts} />
       )}

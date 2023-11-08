@@ -1,6 +1,12 @@
 // import { useDispatch, useSelector } from 'react-redux';
+import {
+  StyledForm,
+  StyledInput,
+  StyledLabel,
+} from 'components/RegisterForm/RegisterForm.styled';
+import { StyledButton } from 'components/UserMenu/UserMenu.styled';
 import { useSelector } from 'react-redux';
-import css from './ContactForm.module.css';
+
 import { selectItems } from 'redux/contacts.selectors';
 // import { useState } from 'react';
 // import { selectItems } from 'redux/selectors';
@@ -31,30 +37,28 @@ export const ContactForm = ({ addNewContact }) => {
   };
 
   return (
-    <form className={css.form} onSubmit={handleSubmit}>
-      <label htmlFor="">
+    <StyledForm onSubmit={handleSubmit}>
+      <StyledLabel>
         <p>Name</p>
-        <input
+        <StyledInput
           type="text"
           name="name"
           // onChange={handleChange}
           value={contacts.name}
           required
         />
-      </label>
-      <label htmlFor="">
+      </StyledLabel>
+      <StyledLabel>
         <p>Number</p>
-        <input
+        <StyledInput
           type="tel"
           name="number"
           // onChange={handleChange}
           value={contacts.number}
           required
         />
-      </label>
-      <button className={css.formButton} type="submit">
-        Add contact
-      </button>
-    </form>
+      </StyledLabel>
+      <StyledButton type="submit">Add contact</StyledButton>
+    </StyledForm>
   );
 };

@@ -8,11 +8,15 @@ export const StyledNavLink = styled(NavLink)`
   padding: 0 5px;
 
   &:hover,
-  &:focus {
+  &:focus,
+  &.active {
+    border: 1px solid transparent;
+    border-radius: 10px;
+    box-shadow: -4px -2px 63px 35px rgba(155, 155, 155, 0.08) inset;
+    -webkit-box-shadow: -4px -2px 63px 35px rgba(155, 155, 155, 0.08) inset;
+    -moz-box-shadow: -4px -2px 63px 35px rgba(155, 155, 155, 0.08) inset;
     color: #289b22;
-
-    border: 1px transparent;
-    border-radius: 5px;
+    scale: 1.1;
   }
 `;
 export const StyledDiv = styled.div`
@@ -30,16 +34,30 @@ export const StyledDiv = styled.div`
   }
 `;
 export const StyledButton = styled.button`
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 10px 5px;
   font-weight: 500;
   font-size: 20px;
   color: white;
-  border: 1px transparent;
-  border-radius: 5px;
+  border: 1px solid transparent;
+  border-radius: 8px;
   background-color: #289b22;
   box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.3);
   width: 120px;
+  &.delete {
+    padding: 0;
+    font-size: 18px;
+    width: 80px;
+  }
+  &.logout {
+    padding: 0;
+    font-size: 23px;
+  }
   &:hover,
   &:focus {
-    scale: 1.1;
+    /* scale: 1.1; */
+    color: #289b22;
+    background-color: white;
+    border: 2px solid #289b22;
   }
 `;

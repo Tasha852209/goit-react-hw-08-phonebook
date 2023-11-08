@@ -1,3 +1,10 @@
+import {
+  StyledForm,
+  StyledInput,
+  StyledLabel,
+  StyledP,
+} from 'components/RegisterForm/RegisterForm.styled';
+import { StyledButton } from 'components/UserMenu/UserMenu.styled';
 import { Notify } from 'notiflix';
 import React from 'react';
 import { useForm } from 'react-hook-form';
@@ -19,26 +26,29 @@ const LoginForm = () => {
 
   return (
     <>
-      <p>Login</p>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <label>
+      <StyledP>Login</StyledP>
+      <StyledForm onSubmit={handleSubmit(onSubmit)}>
+        <StyledLabel>
           <span>Email:</span>
-          <input {...register('email', { required: true })} type="email" />
+          <StyledInput
+            {...register('email', { required: true })}
+            type="email"
+          />
           {errors.email && onSubmit && Notify.failure('This field is required')}
-        </label>
-        <label>
+        </StyledLabel>
+        <StyledLabel>
           <span>Password:</span>
-          <input
+          <StyledInput
             {...register('password', { required: true, minLength: 7 })}
             type="password"
           />
           {errors.password &&
             onSubmit &&
             Notify.failure('This field is required with minimum 7 characters')}
-        </label>
+        </StyledLabel>
 
-        <button type="submit">Login</button>
-      </form>
+        <StyledButton type="submit">Login</StyledButton>
+      </StyledForm>
     </>
   );
 };

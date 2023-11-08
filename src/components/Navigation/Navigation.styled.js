@@ -11,12 +11,23 @@ export const StyledNav = styled.nav`
     gap: 15px;
   }
 `;
-export const StyledHomePage = styled.div`
+export const StyledHomePage = styled.p`
   display: flex;
+  gap: 150px;
+  flex-direction: column;
   justify-content: center;
   margin-top: 110px;
   font-weight: 700;
   color: #289b22;
   font-size: 45px;
   text-align: center;
+`;
+export const StyledContacts = styled.p`
+  font-size: 25px;
+  padding-left: 20px;
+`;
+
+export const StyledSpan = styled.span`
+  font-size: 20px;
+  /* padding-left: 20px; */
 `;

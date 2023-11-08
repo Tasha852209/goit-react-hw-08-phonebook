@@ -1,16 +1,18 @@
-import css from './ContactItem.module.css';
+import { StyledSpan } from 'components/Navigation/Navigation.styled';
+import { StyledButton } from 'components/UserMenu/UserMenu.styled';
+
 export const ContactItem = ({ id, name, number, onDeleteContact }) => {
   return (
     <li key={id}>
-      <span>{name}:</span>
-      <span> {number}</span>
-      <button
-        className={css.buttonDelete}
+      <StyledSpan>{name}:</StyledSpan>
+      <StyledSpan> {number}</StyledSpan>
+      <StyledButton
+        className="delete"
         type="button"
         onClick={() => onDeleteContact(id)}
       >
         Delete
-      </button>
+      </StyledButton>
     </li>
   );
 };

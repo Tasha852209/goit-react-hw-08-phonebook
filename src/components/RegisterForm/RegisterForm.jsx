@@ -3,6 +3,13 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { registerThunk } from 'redux/AuthSlice';
+import {
+  StyledForm,
+  StyledInput,
+  StyledLabel,
+  StyledP,
+} from './RegisterForm.styled';
+import { StyledButton } from 'components/UserMenu/UserMenu.styled';
 
 const RegisterForm = () => {
   const {
@@ -19,29 +26,29 @@ const RegisterForm = () => {
 
   return (
     <>
-      <p>Register</p>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <label>
+      <StyledP>Register</StyledP>
+      <StyledForm onSubmit={handleSubmit(onSubmit)}>
+        <StyledLabel>
           <span>Name:</span>
-          <input
+          <StyledInput
             {...register('name', { required: true })}
             type="text"
             placeholder="name or/and surname"
           />
           {errors.name && onSubmit && Notify.failure('This field is required')}
-        </label>
-        <label>
+        </StyledLabel>
+        <StyledLabel>
           <span>Email:</span>
-          <input
+          <StyledInput
             {...register('email', { required: true })}
             type="email"
             placeholder="example@mail.com"
           />
           {errors.email && onSubmit && Notify.failure('This field is required')}
-        </label>
-        <label>
+        </StyledLabel>
+        <StyledLabel>
           <span>Password:</span>
-          <input
+          <StyledInput
             {...register('password', { required: true, minLength: 7 })}
             type="password"
             placeholder="minimum 7 characters"
@@ -49,10 +56,10 @@ const RegisterForm = () => {
           {errors.password &&
             onSubmit &&
             Notify.failure('This field is required with 7 characters')}
-        </label>
+        </StyledLabel>
 
-        <button type="submit">Register</button>
-      </form>
+        <StyledButton type="submit">Register</StyledButton>
+      </StyledForm>
     </>
   );
 };

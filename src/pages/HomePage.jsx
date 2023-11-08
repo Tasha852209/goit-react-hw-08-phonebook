@@ -6,7 +6,9 @@ const HomePage = () => {
   return (
     <StyledHomePage>
       Welcome to your PhoneBook
-      <IconPhoneBook />
+      <span>
+        <IconPhoneBook />
+      </span>
     </StyledHomePage>
   );
 };

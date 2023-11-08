@@ -1,10 +1,11 @@
 import React from 'react';
 import css from './Filter.module.css';
+import { StyledInput } from 'components/RegisterForm/RegisterForm.styled';
 export const Filter = ({ value, handleFilterContacts }) => {
   const handleChange = e => handleFilterContacts(e.target.value);
   return (
     <div className={css.filter}>
-      <input
+      <StyledInput
         value={value}
         type="text"
         onChange={handleChange}
