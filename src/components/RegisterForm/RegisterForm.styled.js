@@ -18,11 +18,11 @@ export const StyledInput = styled.input`
   margin-top: 10px;
   font-size: 16px;
   line-height: 1.2;
-  /* border: 1px solid grey; */
+  border: 1px solid grey;
   border-radius: 8px;
   width: 280px;
   cursor: pointer;
-  /* transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1); */
+  /* transition: 250ms cubic-bezier(0.4, 0, 0.2, 1); */
   &:focus {
     /* border: 3px solid grey; */
     outline-offset: -1px;

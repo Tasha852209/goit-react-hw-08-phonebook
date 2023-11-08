@@ -19,6 +19,7 @@ import Loader from '../components/Loader';
 import ErrorMessage from '../components/ErrorMessage';
 import { StyledP } from 'components/RegisterForm/RegisterForm.styled';
 import { StyledContacts } from 'components/Navigation/Navigation.styled';
+import { Notify } from 'notiflix';
 
 const ContactsPage = () => {
   const dispatch = useDispatch();
@@ -33,7 +34,7 @@ const ContactsPage = () => {
 
   const addNewContact = newContact => {
     contacts.some(({ name }) => name === newContact.name)
-      ? alert(`${newContact.name} is already in contacts`)
+      ? Notify.failure(`${newContact.name} is already in contacts`)
       : dispatch(addContact(newContact));
   };
 
