@@ -20,7 +20,7 @@ export const StyledInput = styled.input`
   line-height: 1.2;
   /* border: 1px solid grey; */
   border-radius: 8px;
-  width: 350px;
+  width: 280px;
   cursor: pointer;
   /* transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1); */
   &:focus {
@@ -41,21 +41,5 @@ export const StyledLabel = styled.label`
   p {
     margin-bottom: 0;
     margin-top: 0;
-  }
-`;
-
-export const Input = styled.input`
-  padding: 16px;
-  /* margin-top: 8px; */
-  font-size: 16px;
-  line-height: 1.2;
-  border: 1px solid grey;
-  border-radius: 8px;
-  width: 350px;
-  cursor: pointer;
-  transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  &:focus {
-    border: 3px solid grey;
-    outline: none;
   }
 `;
