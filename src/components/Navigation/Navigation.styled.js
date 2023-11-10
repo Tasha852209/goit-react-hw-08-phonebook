@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const StyledNav = styled.nav`
   display: flex;
+  align-items: baseline;
   justify-content: space-between;
   padding-bottom: 5px;
   border-bottom: 3px solid #289b22;
