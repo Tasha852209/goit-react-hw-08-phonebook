@@ -5,7 +5,7 @@ export const StyledNav = styled.nav`
   justify-content: space-between;
   padding-bottom: 5px;
   border-bottom: 3px solid #289b22;
-  gap: 20px;
+  gap: 5px;
   div {
     display: flex;
     gap: 15px;

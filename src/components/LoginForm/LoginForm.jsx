@@ -20,8 +20,15 @@ const LoginForm = () => {
   } = useForm();
   const dispatch = useDispatch();
   const onSubmit = data => {
-    dispatch(loginThunk(data));
-    reset();
+    dispatch(loginThunk(data))
+      .unwrap()
+      .then(
+        ({ user }) => Notify.success(`Welcome to your PhoneBook ${user.name}`),
+        reset()
+      )
+      .catch(err => {
+        Notify.failure('Please write the correct Email or Password');
+      });
   };
 
   return (

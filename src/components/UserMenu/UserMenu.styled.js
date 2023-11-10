@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export const StyledNavLink = styled(NavLink)`
   text-decoration: none;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 500;
   padding: 0 5px;
 
@@ -45,9 +45,17 @@ export const StyledButton = styled.button`
   max-width: 120px;
   &.delete {
     margin-left: 10px;
-    padding: 0;
+    padding: 3px 0px 0px 0px;
     font-size: 18px;
-    width: 80px;
+    width: 30px;
+    background-color: white;
+    fill: red;
+    &:hover,
+    &:focus,
+    &:active {
+      fill: white;
+      background-color: red;
+    }
   }
   &.logout {
     padding: 0 5px;

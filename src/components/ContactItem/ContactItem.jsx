@@ -1,5 +1,6 @@
 import { StyledSpan } from 'components/Navigation/Navigation.styled';
 import { StyledButton } from 'components/UserMenu/UserMenu.styled';
+import { ReactComponent as IconDelete } from 'images/delete-icon.svg';
 
 export const ContactItem = ({ id, name, number, onDeleteContact }) => {
   return (
@@ -11,7 +12,7 @@ export const ContactItem = ({ id, name, number, onDeleteContact }) => {
         type="button"
         onClick={() => onDeleteContact(id)}
       >
-        Delete
+        <IconDelete />
       </StyledButton>
     </li>
   );
