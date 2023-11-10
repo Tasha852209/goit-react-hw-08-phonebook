@@ -40,6 +40,7 @@ const LoginForm = () => {
           <StyledInput
             {...register('email', { required: true })}
             type="email"
+            placeholder="Your email"
           />
           {errors.email && onSubmit && Notify.failure('This field is required')}
         </StyledLabel>
@@ -48,6 +49,7 @@ const LoginForm = () => {
           <StyledInput
             {...register('password', { required: true, minLength: 7 })}
             type="password"
+            placeholder="Your password"
           />
           {errors.password &&
             onSubmit &&
